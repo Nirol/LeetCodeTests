@@ -36,8 +36,9 @@ class Solution:
 
 if(__name__ == "__main__"):
     n = 19
-    [(int((str(n))[x])) ** 2 for x in range (0,len(str(n)))]
+    try_list_comp =   [(int((str(n))[x])) ** 2 for x in range (0,len(str(n)))]
+    print (try_list_comp )
     x = Solution()
-    obj = x.isHappy(num)
+    obj = x.isHappy(n)
     print(obj)
 
