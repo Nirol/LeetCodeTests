@@ -20,6 +20,6 @@ class Solution:
 
 
 if(__name__ == "__main__"):
-    x = Solution()
-    ans = x.generate(5)
-    print(ans)
+        x = Solution()
+        ans = x.generate(5)
+        print(ans)
