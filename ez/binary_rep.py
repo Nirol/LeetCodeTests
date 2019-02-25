@@ -1,30 +1,28 @@
 class Solution:
-    def binaryGap(self, N):
+    @staticmethod
+    def binary_gap(num):
         """
-        :type N: int
+        :type num: int
         :rtype: int
         """
         best = -1
-        start_indx = 0
-        for idx, val in enumerate(bin(N)[2:]):
+        start_index = 0
+        for idx, val in enumerate(bin(num)[2:]):
             print(idx, val)
             if val == '1':
-                if (idx - start_indx) > best:
+                if (idx - start_index) > best:
                     print("ong")
-                    best=(idx - start_indx)
-                start_indx = idx
+                    best = (idx - start_index)
+                start_index = idx
         return best
 
 
-
-
-
-
-if(__name__ == "__main__"):
-
+if __name__ == "__main__":
     x = Solution()
-   # ans = x.binaryGap(22)
     for i in range(32):
-        print (22>>i)
-    print ("lol")
+        print(22 >> i)
     print(bin(22))
+    my_list = [
+        1, 2, 3,
+        4, 5, 6,
+                        ]
