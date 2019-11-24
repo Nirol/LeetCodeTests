@@ -25,10 +25,6 @@ class Solution:
 
 
 
-
-
-
-
 if __name__ == "__main__":
     x = Solution()
     ans = x.countPrimes(10)

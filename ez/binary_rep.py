@@ -11,7 +11,7 @@ class Solution:
             print(idx, val)
             if val == '1':
                 if (idx - start_index) > best:
-                    print("ong")
+
                     best = (idx - start_index)
                 start_index = idx
         return best

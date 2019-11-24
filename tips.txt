@@ -1,0 +1,136 @@
+Taken from LongestSubstring_With_K.py:
+    1. c = min(set(s), key=s.count)   -- least frequent char in string s
+
+    2. max(self.longestSubstring(t, k) for t in s.split(c))   -- List Comprehensions for each substring
+
+    3. return sum(map(S.count, J))     count occurence of J chars in String S.
+
+4. remove dup from sorted array :  find the non-dupes and store them in the front of array. I tried looking for dupes but looking for non-dupes is way better here
+
+    5. to lower case in python 1 liner :  return "".join(chr(ord(c) + 32) if "A" <= c <= "Z" else c for c in str)
+
+5. binary gap: max distance between two 1 bits in the binary representation of a number:
+
+        index = [i for i, v in enumerate(bin(N)) if v == '1']
+        return max([b - a for a, b in zip(index, index[1:])] or [0])
+
+        or
+
+        return max(len(c) for c in bin(N)[2:].strip('0').split('1')) + 1 if N & (
+            N - 1) else 0
+        striping 0 from left and right and splitting by '1' to recieve blocks of '0' , we look the maximum block of 0 length
+
+
+
+
+6. two binary trees leaf seq compared:
+def leafSimilar(self, root1, root2):
+    def dfs(node):
+        if not node: return
+        if not node.left and not node.right: yield node.val
+        for i in dfs(node.left): yield i
+        for i in dfs(node.right): yield i
+
+    return all(
+        a == b for a, b in itertools.izip_longest(dfs(root1), dfs(root2))
+
+
+
+
+
+
+7. input values after split to multiple variables local_name,domain_name = email.split("@")
+
+setting up set beforehand and adding to it non dup's   email_set = set()   email_set.add(email)
+
+
+
+8. Pascal triangle in python:
+def generate(self, numRows):
+        res = [[1]]
+        for i in range(1, numRows):
+            res += [map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1])]
+        return res[:numRows]
+
+
+        9. k larget - heap in python.
+
+
+
+
+
+ 10. Using DFS for combination sum problem   OR more backtracking methods : https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+ def combinationSum(self, candidates, target):
+     res = []
+     candidates.sort()
+     self.dfs(candidates, target, 0, [], res)
+     return res
+
+ def dfs(self, nums, target, index, path, res):
+     if target < 0:
+         return  # backtracking
+     if target == 0:
+         res.append(path)
+         return
+     for i in xrange(index, len(nums)):
+         self.dfs(nums, target-nums[i], i, path+[nums[i]], res)
+
+
+
+
+
+         The above bisect() functions are useful for finding insertion points but can be tricky or awkward to use for common searching tasks. The following five functions show how to transform them into the standard lookups for sorted lists:
+
+         def index(a, x):
+             'Locate the leftmost value exactly equal to x'
+             i = bisect_left(a, x)
+             if i != len(a) and a[i] == x:
+                 return i
+             raise ValueError
+
+         def find_lt(a, x):
+             'Find rightmost value less than x'
+             i = bisect_left(a, x)
+             if i:
+                 return a[i-1]
+             raise ValueError
+
+         def find_le(a, x):
+             'Find rightmost value less than or equal to x'
+             i = bisect_right(a, x)
+             if i:
+                 return a[i-1]
+             raise ValueError
+
+         def find_gt(a, x):
+             'Find leftmost value greater than x'
+             i = bisect_right(a, x)
+             if i != len(a):
+                 return a[i]
+             raise ValueError
+
+         def find_ge(a, x):
+             'Find leftmost item greater than or equal to x'
+             i = bisect_left(a, x)
+             if i != len(a):
+                 return a[i]
+             raise ValueError
+
+
+>>> def grade(score, breakpoints=[60, 70, 80, 90], grades='FDCBA'):
+        i = bisect(breakpoints, score)
+        return grades[i]
+
+>>> [grade(score) for score in [33, 99, 77, 70, 89, 90, 100]]
+['F', 'A', 'C', 'C', 'B', 'A', 'A']
+
+Notable
+
+zip
+strip
+split
+join
+enumerate
+count
+generators/yield
+    itertools zip longest.

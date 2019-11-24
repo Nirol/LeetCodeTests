@@ -8,7 +8,9 @@ class Solution(object):
         temp1 = S.split("-")
         string1=""
         string2=string1.join(temp1)
+        print(string2)
         string2=string2.upper()[::-1]
+        print(string2)
         res = '-'.join([string2[i:i + K] for i in range(0, len(string2), K)])
         print(temp1)
         print(string2)
